@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -24,6 +25,19 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+                space: {
+                  dark: "#1A1F2C",
+                  darker: "#0F1319",
+                  purple: {
+                    DEFAULT: "#8B5CF6",
+                    light: "#A78BFA",
+                    dark: "#7E69AB",
+                  },
+                  blue: {
+                    DEFAULT: "#0EA5E9",
+                    light: "#38BDF8",
+                  }
+                },
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -84,12 +98,37 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+        'twinkle': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.3' }
+        },
+        'float': {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' }
+        },
+        'fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' }
+        }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+        'twinkle-slow': 'twinkle 6s ease-in-out infinite',
+        'twinkle-fast': 'twinkle 3s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'fade-in-up': 'fade-in-up 0.8s ease-out'
+			},
+      fontFamily: {
+        'sans': ['Inter', 'sans-serif'],
+        'poppins': ['Poppins', 'sans-serif']
+      },
+      backgroundImage: {
+        'hero-stars': "url('/stars-bg.png')",
+        'nebula-gradient': 'linear-gradient(to right, #8B5CF6, #0EA5E9)',
+        'nebula-dark': 'linear-gradient(to right, #1A1F2C, #0F1319)'
+      }
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
