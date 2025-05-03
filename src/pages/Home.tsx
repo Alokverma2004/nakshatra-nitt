@@ -51,12 +51,30 @@ const Home = () => {
     return () => clearInterval(imageInterval);
   }, []);
 
+  // Text fade-in on load effect
+  useEffect(() => {
+    const titleElement = document.querySelector('.hero-title');
+    const subtitleElement = document.querySelector('.hero-subtitle');
+    
+    if (titleElement) {
+      titleElement.classList.add('animate-fade-in-up');
+      titleElement.classList.remove('opacity-0');
+    }
+    
+    if (subtitleElement) {
+      setTimeout(() => {
+        subtitleElement.classList.add('animate-fade-in-up');
+        subtitleElement.classList.remove('opacity-0');
+      }, 300);
+    }
+  }, []);
+
   return (
     <>
       <StarBackground />
       
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center text-center px-4">
+      {/* Hero Section with Parallax Effect */}
+      <section className="relative h-screen flex items-center justify-center text-center px-4 parallax-container">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-space-darker/50 via-space-dark to-space-dark"></div>
         </div>
@@ -67,14 +85,14 @@ const Home = () => {
             <div className="flipper">
               <div className="front">
                 <img 
-                  src="/lovable-uploads/ef37f970-7aea-46e1-b8e4-ad7bad0c6709.png" 
+                  src="/lovable-uploads/nakshatra-logo.png" 
                   alt="Nakshatra Logo" 
                   className="h-32 mx-auto"
                 />
               </div>
               <div className="back">
                 <img 
-                  src="/lovable-uploads/ef37f970-7aea-46e1-b8e4-ad7bad0c6709.png" 
+                  src="/lovable-uploads/nakshatra-logo.png" 
                   alt="Nakshatra Logo" 
                   className="h-32 mx-auto"
                 />
@@ -82,25 +100,25 @@ const Home = () => {
             </div>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-poppins mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-poppins mb-6 leading-tight opacity-0 hero-title transition-opacity duration-700">
             <span className="text-white">Nakshatra</span>
             <span className="block text-space-purple-light">The Astronomy Club of NIT Trichy</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto opacity-0 hero-subtitle transition-opacity duration-700">
             Exploring the Universe, One Star at a Time
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/about" className="btn-primary text-lg font-medium">
+            <Link to="/about" className="btn-primary text-lg font-medium glow-on-hover">
               Explore
             </Link>
-            <Link to="/events" className="btn-outline text-lg font-medium">
+            <Link to="/events" className="btn-outline text-lg font-medium glow-on-hover">
               Upcoming Events
             </Link>
           </div>
         </div>
         
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <a href="#about" className="text-white/70 hover:text-white transition-colors">
+          <a href="#about" className="text-white/70 hover:text-white transition-colors smooth-scroll">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
@@ -109,7 +127,7 @@ const Home = () => {
       </section>
       
       {/* About Section Preview */}
-      <section id="about" className="section bg-space-darker">
+      <section id="about" className="section bg-space-darker parallax-section">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 heading">About Nakshatra</h2>
@@ -225,10 +243,10 @@ const Home = () => {
             Join Us in Exploring the Cosmos
           </h2>
           <div className="flex flex-wrap justify-center gap-4 reveal mt-6">
-            <Link to="/contact" className="btn-primary text-lg font-medium">
+            <Link to="/contact" className="btn-primary text-lg font-medium glow-on-hover">
               Contact Us
             </Link>
-            <Link to="/events" className="btn-outline text-lg font-medium">
+            <Link to="/events" className="btn-outline text-lg font-medium glow-on-hover">
               Join an Event
             </Link>
           </div>

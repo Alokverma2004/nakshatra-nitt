@@ -1,20 +1,64 @@
 
 import { useState, useEffect } from 'react';
-import { Outlet, NavLink, Link } from 'react-router-dom';
+import { Outlet, NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Layout = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+      
+      // Navbar highlight effect
+      const sections = document.querySelectorAll('section[id]');
+      const scrollPosition = window.scrollY + 100; // offset
+      
+      sections.forEach((section) => {
+        const sectionTop = (section as HTMLElement).offsetTop;
+        const sectionHeight = (section as HTMLElement).offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          document.querySelector(`a[href*=${sectionId}]`)?.classList.add('nav-active');
+        } else {
+          document.querySelector(`a[href*=${sectionId}]`)?.classList.remove('nav-active');
+        }
+      });
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a.smooth-scroll').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (href) {
+          const targetEl = document.querySelector(href);
+          if (targetEl) {
+            targetEl.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
+
+  // Close mobile menu when navigating
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -22,6 +66,7 @@ const Layout = () => {
       <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-space-dark/90 backdrop-blur-md shadow-md' : 'bg-transparent'}`}>
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-2">
+            <img src="/lovable-uploads/nakshatra-logo.png" alt="Nakshatra Logo" className="h-8 w-auto" />
             <span className="text-2xl font-poppins font-bold text-white">Nakshatra</span>
           </Link>
           
@@ -141,7 +186,10 @@ const Layout = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-xl font-poppins font-bold mb-4 text-white">Nakshatra</h3>
+              <div className="flex items-center space-x-2 mb-4">
+                <img src="/lovable-uploads/nakshatra-logo.png" alt="Nakshatra Logo" className="h-8 w-auto" />
+                <h3 className="text-xl font-poppins font-bold text-white">Nakshatra</h3>
+              </div>
               <p className="text-gray-400">
                 The Astronomy and Science Club of NIT Trichy, exploring the universe one star at a time.
               </p>

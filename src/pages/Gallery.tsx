@@ -13,14 +13,14 @@ const galleryImages = [
   {
     id: 2,
     title: "Telescope Observation",
-    category: "Events",
+    category: "Stardust",
     src: "https://images.unsplash.com/photo-1465101162946-4377e57745c3",
     description: "Students using the telescope during one of our stargazing sessions."
   },
   {
     id: 3,
     title: "Solar Eclipse",
-    category: "Celestial Events",
+    category: "National space day",
     src: "https://images.unsplash.com/photo-1532798442725-41036acc7489",
     description: "Partial solar eclipse observed during our eclipse viewing event."
   },
@@ -34,7 +34,7 @@ const galleryImages = [
   {
     id: 5,
     title: "Workshop Session",
-    category: "Events",
+    category: "World space week",
     src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1",
     description: "Students participating in our astronomy workshop on constellation identification."
   },
@@ -48,7 +48,7 @@ const galleryImages = [
   {
     id: 7,
     title: "Student Competition",
-    category: "Events",
+    category: "World space week",
     src: "https://images.unsplash.com/photo-1614642264762-d0a3b8bf3700",
     description: "Participants during our annual astronomy quiz competition."
   },
@@ -62,35 +62,35 @@ const galleryImages = [
   {
     id: 9,
     title: "Observatory Visit",
-    category: "Field Trips",
+    category: "National space day",
     src: "https://images.unsplash.com/photo-1572639083880-46e2c15560ad",
     description: "Club members visiting the regional observatory as part of our annual field trip."
   },
   {
     id: 10,
     title: "Meteor Shower",
-    category: "Celestial Events",
+    category: "Stardust",
     src: "https://images.unsplash.com/photo-1596445836561-991bcd39a86d",
     description: "Perseid meteor shower captured during our overnight observation session."
   },
   {
     id: 11,
     title: "Public Outreach",
-    category: "Events",
+    category: "World space week",
     src: "https://images.unsplash.com/photo-1454789548928-9efd52dc4031",
     description: "Club members conducting a public outreach program at the community science fair."
   },
   {
     id: 12,
     title: "Moon Close-up",
-    category: "Astrophotography",
+    category: "Stardust",
     src: "https://images.unsplash.com/photo-1522030299830-16b8d3d049fe",
     description: "Detailed photograph of lunar craters taken with our telescope and camera setup."
   }
 ];
 
-// Image categories for filtering
-const categories = ["All", "Astrophotography", "Events", "Celestial Events", "Field Trips"];
+// Updated image categories for filtering
+const categories = ["All", "Astrophotography", "Stardust", "National space day", "World space week"];
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -311,25 +311,6 @@ const Gallery = () => {
           </div>
         </div>
       )}
-      
-      {/* Photo Submission */}
-      <section className="py-20 bg-space-darker relative">
-        <div className="absolute inset-0 z-0 opacity-30">
-          <div className="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-space-purple/20 via-transparent to-transparent"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-6 text-white reveal">
-            Share Your Astrophotography
-          </h2>
-          <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto reveal">
-            Are you a club member with amazing astronomy photographs? Submit your work to be featured in our gallery!
-          </p>
-          <a href="/contact" className="btn-primary text-lg font-medium reveal">
-            Submit Your Photos
-          </a>
-        </div>
-      </section>
     </>
   );
 };

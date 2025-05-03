@@ -93,6 +93,7 @@
   .flip-container {
     perspective: 1000px;
     display: inline-block;
+    margin-bottom: 1.5rem;
   }
 
   .flip-container:hover .flipper {
@@ -103,6 +104,8 @@
     transition: 0.8s;
     transform-style: preserve-3d;
     position: relative;
+    width: 128px;
+    height: 128px;
   }
 
   .front, .back {
@@ -124,4 +127,76 @@
     /* back side is initially hidden */
     transform: rotateY(180deg);
   }
+  
+  /* Glow on hover buttons */
+  .glow-on-hover {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .glow-on-hover:after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .glow-on-hover:hover:after {
+    opacity: 1;
+  }
+  
+  /* Parallax effect */
+  .parallax-container {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .parallax-section {
+    position: relative;
+  }
+  
+  /* Smooth scroll */
+  .smooth-scroll {
+    transition: all 0.5s ease;
+  }
+}
+
+/* Navbar scroll highlight */
+.nav-active::after {
+  @apply w-full;
+}
+
+/* Additional animations */
+@keyframes float-up-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float-up-down 4s ease-in-out infinite;
+}
+
+/* Enhanced fade-in-up animation */
+@keyframes enhanced-fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.enhanced-fade-in {
+  animation: enhanced-fade-in-up 0.8s forwards;
 }
