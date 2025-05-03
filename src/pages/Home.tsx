@@ -1,11 +1,19 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import StarBackground from '../components/StarBackground';
 import { ArrowRight, Calendar, Telescope, Users } from 'lucide-react';
 
+const cosmosImages = [
+  "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb",
+  "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05",
+  "https://images.unsplash.com/photo-1465101162946-4377e57745c3",
+  "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45"
+];
+
 const Home = () => {
   const featuredElementsRef = useRef<HTMLDivElement>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,6 +39,17 @@ const Home = () => {
       elements.forEach((el) => observer.unobserve(el));
     };
   }, []);
+  
+  // Effect for image rotation in "Who We Are" section
+  useEffect(() => {
+    const imageInterval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === cosmosImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+    
+    return () => clearInterval(imageInterval);
+  }, []);
 
   return (
     <>
@@ -43,6 +62,26 @@ const Home = () => {
         </div>
         
         <div className="container mx-auto relative z-10">
+          {/* Logo with flip animation */}
+          <div className="mb-6 flip-container">
+            <div className="flipper">
+              <div className="front">
+                <img 
+                  src="/lovable-uploads/b65fb392-581d-4ab2-933e-9a4c5d38e2b0.png" 
+                  alt="Nakshatra Logo" 
+                  className="h-32 mx-auto"
+                />
+              </div>
+              <div className="back">
+                <img 
+                  src="/lovable-uploads/b65fb392-581d-4ab2-933e-9a4c5d38e2b0.png" 
+                  alt="Nakshatra Logo" 
+                  className="h-32 mx-auto"
+                />
+              </div>
+            </div>
+          </div>
+
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-poppins mb-6 leading-tight">
             <span className="text-white">Nakshatra</span>
             <span className="block text-space-purple-light">The Astronomy Club of NIT Trichy</span>
@@ -92,11 +131,14 @@ const Home = () => {
             </div>
             <div className="space-card p-6 reveal">
               <div className="relative rounded-lg overflow-hidden h-72">
-                <img 
-                  src="https://images.unsplash.com/photo-1470813740244-df37b8c1edcb" 
-                  alt="Starry night sky" 
-                  className="w-full h-full object-cover"
-                />
+                {cosmosImages.map((src, index) => (
+                  <img 
+                    key={index}
+                    src={src} 
+                    alt={`Cosmos image ${index + 1}`} 
+                    className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+                  />
+                ))}
                 <div className="absolute inset-0 bg-gradient-to-t from-space-darker to-transparent"></div>
                 <div className="absolute bottom-4 left-4 text-white">
                   <h4 className="text-xl font-medium">Explore the Cosmos</h4>
@@ -172,61 +214,7 @@ const Home = () => {
         </div>
       </section>
       
-      {/* Gallery Preview */}
-      <section className="section bg-space-darker relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-30">
-          <div className="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-space-purple/20 via-transparent to-transparent"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16 reveal">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 heading">Gallery</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Explore our collection of astronomical photographs, event memories, and more
-            </p>
-            <div className="w-24 h-1 bg-space-purple mx-auto mt-4"></div>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 reveal">
-            <div className="aspect-square overflow-hidden rounded-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1470813740244-df37b8c1edcb" 
-                alt="Night Sky" 
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-              />
-            </div>
-            <div className="aspect-square overflow-hidden rounded-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05" 
-                alt="Mountain Night" 
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-              />
-            </div>
-            <div className="aspect-square overflow-hidden rounded-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1465101162946-4377e57745c3" 
-                alt="Telescope" 
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-              />
-            </div>
-            <div className="aspect-square overflow-hidden rounded-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45" 
-                alt="Observatory" 
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-              />
-            </div>
-          </div>
-          
-          <div className="text-center mt-10 reveal">
-            <Link to="/gallery" className="btn-primary">
-              View Full Gallery
-            </Link>
-          </div>
-        </div>
-      </section>
-      
-      {/* Call to Action */}
+      {/* Call to Action - with removed text as requested */}
       <section className="py-20 bg-space-dark relative">
         <div className="absolute inset-0 z-0">
           <div className="w-full h-full bg-nebula-gradient opacity-10"></div>
@@ -236,10 +224,7 @@ const Home = () => {
           <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-6 text-white reveal">
             Join Us in Exploring the Cosmos
           </h2>
-          <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto reveal">
-            Become a part of Nakshatra and embark on a journey through the stars with fellow astronomy enthusiasts.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 reveal">
+          <div className="flex flex-wrap justify-center gap-4 reveal mt-6">
             <Link to="/contact" className="btn-primary text-lg font-medium">
               Contact Us
             </Link>

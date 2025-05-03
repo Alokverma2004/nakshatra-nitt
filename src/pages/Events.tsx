@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { Calendar } from 'lucide-react';
 
 // Sample event data (in a real app, this would come from an API or database)
 const upcomingEvents = [
@@ -20,41 +21,46 @@ const pastEvents = [
     id: 101,
     title: "Astronomy Quiz Competition",
     date: "2025-04-05",
-    location: "Central Auditorium",
-    description: "A challenging quiz testing knowledge of astronomy, astrophysics, and space exploration."
+    location: "A2 Hall",
+    description: "A challenging quiz testing knowledge of astronomy, astrophysics, and space exploration.",
+    image: "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45"
   },
   {
     id: 102,
     title: "Guest Lecture: Black Holes",
     date: "2025-03-22",
-    location: "Physics Department",
-    description: "An insightful lecture on the mysteries of black holes by Dr. Sarah Johnson, astrophysicist."
+    location: "Barn Hall",
+    description: "An insightful lecture on the mysteries of black holes by Dr. Sarah Johnson, astrophysicist.",
+    image: "https://images.unsplash.com/photo-1465101162946-4377e57745c3"
   },
   {
     id: 103,
     title: "Meteor Shower Observation",
     date: "2025-02-15",
-    location: "University Observatory",
-    description: "A night of observing the spectacular Perseid meteor shower with fellow astronomy enthusiasts."
+    location: "Ojas",
+    description: "A night of observing the spectacular Perseid meteor shower with fellow astronomy enthusiasts.",
+    image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05"
   },
   {
     id: 104,
     title: "Telescope Making Workshop",
     date: "2024-11-10",
-    location: "Engineering Building",
-    description: "Hands-on workshop where participants learned to build their own small telescopes."
+    location: "A2 Hall",
+    description: "Hands-on workshop where participants learned to build their own small telescopes.",
+    image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb"
   },
   {
     id: 105,
     title: "Annual AstroFest 2024",
     date: "2024-10-05",
-    location: "Campus Central",
-    description: "Our annual astronomy festival featuring competitions, exhibitions, talks, and observation sessions."
+    location: "Barn Hall",
+    description: "Our annual astronomy festival featuring competitions, exhibitions, talks, and observation sessions.",
+    image: "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45"
   }
 ];
 
 const Events = () => {
-  const [activeTab, setActiveTab] = useState('past'); // Changed default to 'past'
+  const [activeTab, setActiveTab] = useState('past'); // Default to 'past'
   
   // Format date function
   const formatDate = (dateString: string) => {
@@ -124,34 +130,32 @@ const Events = () => {
             </button>
           </div>
           
-          {/* Past Events - Now the default view */}
+          {/* Past Events - Simple list with images */}
           {activeTab === 'past' && (
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {pastEvents.map(event => (
-                <div key={event.id} className="space-card p-6 reveal">
-                  <h3 className="text-xl font-bold text-white mb-2">{event.title}</h3>
-                  <div className="flex flex-wrap gap-2 text-sm text-gray-400 mb-3">
-                    <span className="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      {formatDate(event.date)}
-                    </span>
-                    <span className="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      {event.location}
-                    </span>
+                <div key={event.id} className="space-card overflow-hidden reveal">
+                  <div className="relative h-48">
+                    <img 
+                      src={event.image} 
+                      alt={event.title} 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-space-darker/90 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4">
+                      <h3 className="text-xl font-bold text-white">{event.title}</h3>
+                      <p className="text-sm text-gray-300">{formatDate(event.date)} • {event.location}</p>
+                    </div>
                   </div>
-                  <p className="text-gray-300">{event.description}</p>
+                  <div className="p-4">
+                    <p className="text-gray-300">{event.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
           )}
           
-          {/* Upcoming Events */}
+          {/* Upcoming Events - Side layout with one event */}
           {activeTab === 'upcoming' && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
               <div className="md:col-span-1 md:pr-6 mb-6 md:mb-0">
@@ -159,6 +163,16 @@ const Events = () => {
                 <p className="text-gray-300 mb-6">
                   Join us for our exciting upcoming astronomy events. Register early to secure your spot!
                 </p>
+                
+                <div className="space-card p-4 bg-space-purple/10 reveal">
+                  <div className="flex items-center mb-3">
+                    <Calendar className="h-5 w-5 text-space-purple mr-2" />
+                    <h4 className="text-lg font-medium text-white">Mark Your Calendar</h4>
+                  </div>
+                  <p className="text-sm text-gray-300">
+                    Our next stargazing session will be held on May 15th at Ojas. Don't miss this opportunity to explore the night sky with our telescopes.
+                  </p>
+                </div>
               </div>
               
               <div className="md:col-span-2">
