@@ -67,14 +67,14 @@ const Home = () => {
             <div className="flipper">
               <div className="front">
                 <img 
-                  src="/lovable-uploads/b65fb392-581d-4ab2-933e-9a4c5d38e2b0.png" 
+                  src="/lovable-uploads/ef37f970-7aea-46e1-b8e4-ad7bad0c6709.png" 
                   alt="Nakshatra Logo" 
                   className="h-32 mx-auto"
                 />
               </div>
               <div className="back">
                 <img 
-                  src="/lovable-uploads/b65fb392-581d-4ab2-933e-9a4c5d38e2b0.png" 
+                  src="/lovable-uploads/ef37f970-7aea-46e1-b8e4-ad7bad0c6709.png" 
                   alt="Nakshatra Logo" 
                   className="h-32 mx-auto"
                 />
