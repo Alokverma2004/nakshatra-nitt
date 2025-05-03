@@ -114,19 +114,6 @@ const Contact = () => {
                     <p className="text-gray-300">Tiruchirappalli, Tamil Nadu, India - 620015</p>
                   </div>
                 </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-space-purple/20 p-3 rounded-full mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-space-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white">Club Meetings</h3>
-                    <p className="text-gray-300 mt-1">Every Friday, 6:00 PM - 8:00 PM</p>
-                    <p className="text-gray-300">Physics Department Seminar Hall</p>
-                  </div>
-                </div>
               </div>
               
               <div className="mt-8">
@@ -236,73 +223,6 @@ const Contact = () => {
                   </form>
                 )}
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Map Section */}
-      <section className="section bg-space-darker">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 reveal">
-            <h2 className="text-3xl font-poppins font-bold mb-4 heading">Find Us</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Visit us at the Department of Physics, NIT Trichy
-            </p>
-          </div>
-          
-          <div className="rounded-xl overflow-hidden h-96 reveal">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.5732609407598!2d78.80855931091906!3d10.759823689351944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf0cb11eb1b33%3A0xda4e92c5bcd41c1f!2sNational%20Institute%20of%20Technology%2C%20Tiruchirappalli!5e0!3m2!1sen!2sin!4v1651063560853!5m2!1sen!2sin" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-              title="NIT Trichy Map"
-            ></iframe>
-          </div>
-        </div>
-      </section>
-      
-      {/* FAQ Section */}
-      <section className="section bg-space-dark">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 reveal">
-            <h2 className="text-3xl font-poppins font-bold mb-4 heading">Frequently Asked Questions</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Find answers to common questions about Nakshatra and our activities
-            </p>
-          </div>
-          
-          <div className="max-w-3xl mx-auto space-y-6">
-            <div className="space-card p-6 reveal">
-              <h3 className="text-xl font-bold text-white mb-2">How can I join Nakshatra?</h3>
-              <p className="text-gray-300">
-                Any student at NIT Trichy with an interest in astronomy can join Nakshatra. We hold membership drives at the beginning of each academic year, but you can also reach out to us anytime through our contact form or by attending our weekly meetings.
-              </p>
-            </div>
-            
-            <div className="space-card p-6 reveal">
-              <h3 className="text-xl font-bold text-white mb-2">Do I need prior knowledge of astronomy to join?</h3>
-              <p className="text-gray-300">
-                Not at all! We welcome members with all levels of astronomy knowledge, from complete beginners to experienced stargazers. Our activities and sessions cater to different levels, and we're always happy to help newcomers learn about the cosmos.
-              </p>
-            </div>
-            
-            <div className="space-card p-6 reveal">
-              <h3 className="text-xl font-bold text-white mb-2">When and where are club meetings held?</h3>
-              <p className="text-gray-300">
-                We typically meet every Friday from 6:00 PM to 8:00 PM at the Physics Department Seminar Hall. Special events like stargazing sessions may be held at different times and locations, which we announce on our social media and through email to members.
-              </p>
-            </div>
-            
-            <div className="space-card p-6 reveal">
-              <h3 className="text-xl font-bold text-white mb-2">Can non-NIT Trichy students participate in your events?</h3>
-              <p className="text-gray-300">
-                Many of our major events like AstroFest and public stargazing sessions are open to the wider community. However, regular club activities and meetings are primarily for NIT Trichy students. If you're interested in a specific event, please contact us for details on participation.
-              </p>
             </div>
           </div>
         </div>
