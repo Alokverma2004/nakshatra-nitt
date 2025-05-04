@@ -1,7 +1,6 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Outlet, NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const Layout = () => {
   const [isScrolled, setIsScrolled] = useState(false);
