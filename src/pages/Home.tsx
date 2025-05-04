@@ -2,7 +2,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import StarBackground from '../components/StarBackground';
-import { ArrowRight, Calendar, Telescope, Users } from 'lucide-react';
+import { ArrowRight, Calendar, ChevronDown, Telescope, Users } from 'lucide-react';
+
+// Astronomical API data mock (would be replaced with actual API call)
+const astronomicalData = {
+  moonPhase: "Waxing Gibbous",
+  moonIllumination: "78%",
+  starVisibility: "High",
+  time: new Date().toLocaleTimeString()
+};
 
 const cosmosImages = [
   "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb",
@@ -14,13 +22,22 @@ const cosmosImages = [
 const Home = () => {
   const featuredElementsRef = useRef<HTMLDivElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  // Set loaded state after a short delay for animations
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-up');
+            entry.target.classList.add('enhanced-fade-in');
             entry.target.classList.remove('opacity-0');
             observer.unobserve(entry.target);
           }
@@ -51,23 +68,13 @@ const Home = () => {
     return () => clearInterval(imageInterval);
   }, []);
 
-  // Text fade-in on load effect
-  useEffect(() => {
-    const titleElement = document.querySelector('.hero-title');
-    const subtitleElement = document.querySelector('.hero-subtitle');
-    
-    if (titleElement) {
-      titleElement.classList.add('animate-fade-in-up');
-      titleElement.classList.remove('opacity-0');
+  // Scroll down indicator effect
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
-    
-    if (subtitleElement) {
-      setTimeout(() => {
-        subtitleElement.classList.add('animate-fade-in-up');
-        subtitleElement.classList.remove('opacity-0');
-      }, 300);
-    }
-  }, []);
+  };
 
   return (
     <>
@@ -100,29 +107,41 @@ const Home = () => {
             </div>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-poppins mb-6 leading-tight opacity-0 hero-title transition-opacity duration-700">
+          <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold font-poppins mb-6 leading-tight transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <span className="text-white">Nakshatra</span>
             <span className="block text-space-purple-light">The Astronomy Club of NIT Trichy</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto opacity-0 hero-subtitle transition-opacity duration-700">
+          
+          <p className={`text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto transition-all duration-1000 delay-300 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             Exploring the Universe, One Star at a Time
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/about" className="btn-primary text-lg font-medium glow-on-hover">
-              Explore
+          
+          <div className={`flex flex-wrap justify-center gap-4 transition-all duration-1000 delay-500 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <Link to="/about" className="btn-primary text-lg font-medium glow-on-hover group">
+              <span className="relative z-10">Explore</span>
             </Link>
-            <Link to="/events" className="btn-outline text-lg font-medium glow-on-hover">
-              Upcoming Events
+            <Link to="/events" className="btn-outline text-lg font-medium glow-on-hover group">
+              <span className="relative z-10">Upcoming Events</span>
             </Link>
+          </div>
+          
+          {/* Astronomical Data Widget */}
+          <div className={`absolute top-4 right-4 md:right-12 space-card p-3 md:p-4 text-left text-sm transition-all duration-1000 delay-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+            <h4 className="text-space-purple-light font-medium mb-1">Night Sky Status</h4>
+            <div className="text-gray-300 space-y-1">
+              <p>Moon Phase: {astronomicalData.moonPhase}</p>
+              <p>Illumination: {astronomicalData.moonIllumination}</p>
+              <p>Star Visibility: {astronomicalData.starVisibility}</p>
+              <p className="text-xs text-gray-400 mt-1">Last updated: {astronomicalData.time}</p>
+            </div>
           </div>
         </div>
         
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <a href="#about" className="text-white/70 hover:text-white transition-colors smooth-scroll">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer" onClick={scrollToAbout}>
+          <div className="flex flex-col items-center text-white/70 hover:text-white transition-colors">
+            <span className="text-sm mb-2">Scroll to explore</span>
+            <ChevronDown className="animate-bounce h-6 w-6" />
+          </div>
         </div>
       </section>
       
