@@ -3,9 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import StarBackground from '../components/StarBackground';
 import ImageCarousel from '../components/ImageCarousel';
-import { ArrowRight, Calendar, ChevronDown, Telescope, Users } from 'lucide-react';
+import { ArrowRight, Calendar, Telescope, Users, FileText } from 'lucide-react';
 
-// Astronomical API data mock (would be replaced with actual API call)
+// Update astronomical data widget (will be hidden on mobile)
 const astronomicalData = {
   moonPhase: "Waxing Gibbous",
   moonIllumination: "78%",
@@ -57,7 +57,7 @@ const Home = () => {
     };
   }, []);
 
-  // Scroll down indicator effect
+  // Scroll to about section function
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
@@ -76,33 +76,22 @@ const Home = () => {
         </div>
         
         <div className="container mx-auto relative z-10">
-          {/* Logo with flip animation */}
-          <div className="mb-6 flip-container">
-            <div className="flipper">
-              <div className="front">
-                <img 
-                  src="/lovable-uploads/7a406d95-69ac-4b48-96b1-3ff4fc2a17e7.png" 
-                  alt="Nakshatra Logo" 
-                  className="h-32 mx-auto"
-                />
-              </div>
-              <div className="back">
-                <img 
-                  src="/lovable-uploads/7a406d95-69ac-4b48-96b1-3ff4fc2a17e7.png" 
-                  alt="Nakshatra Logo" 
-                  className="h-32 mx-auto"
-                />
-              </div>
-            </div>
+          {/* Logo with animation */}
+          <div className="mb-6 animate-float">
+            <img 
+              src="/lovable-uploads/3e5ff8c0-177a-4b2a-9736-7a55cc335b5c.png" 
+              alt="Nakshatra Logo" 
+              className="h-32 mx-auto hover-glow transition-all duration-500"
+            />
           </div>
 
-          <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold font-poppins mb-6 leading-tight transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold font-poppins mb-6 leading-tight transition-all duration-1000 ease-out gradient-text ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <span className="text-white">Nakshatra</span>
-            <span className="block text-space-blue-light">The Astronomy Club of NIT Trichy</span>
           </h1>
           
-          <p className={`text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto transition-all duration-1000 delay-300 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            Exploring the Universe, One Star at a Time
+          {/* Updated tagline */}
+          <p className={`text-xl md:text-2xl font-work-sans text-sky-200 mb-10 max-w-3xl mx-auto transition-all duration-1000 delay-300 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            The Astronomy and Science Club of NIT Trichy
           </p>
           
           <div className={`flex flex-wrap justify-center gap-4 transition-all duration-1000 delay-500 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -114,8 +103,8 @@ const Home = () => {
             </Link>
           </div>
           
-          {/* Astronomical Data Widget */}
-          <div className={`absolute top-4 right-4 md:right-12 space-card p-3 md:p-4 text-left text-sm transition-all duration-1000 delay-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+          {/* Astronomical Data Widget - hidden on mobile as requested */}
+          <div className={`absolute top-4 right-4 md:right-12 space-card p-3 md:p-4 text-left text-sm transition-all duration-1000 delay-700 ease-out hidden md:block ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
             <h4 className="text-space-blue-light font-medium mb-1">Night Sky Status</h4>
             <div className="text-gray-300 space-y-1">
               <p>Moon Phase: {astronomicalData.moonPhase}</p>
@@ -123,13 +112,6 @@ const Home = () => {
               <p>Star Visibility: {astronomicalData.starVisibility}</p>
               <p className="text-xs text-gray-400 mt-1">Last updated: {astronomicalData.time}</p>
             </div>
-          </div>
-        </div>
-        
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer" onClick={scrollToAbout}>
-          <div className="flex flex-col items-center text-white/70 hover:text-white transition-colors">
-            <span className="text-sm mb-2">Scroll to explore</span>
-            <ChevronDown className="animate-bounce h-6 w-6" />
           </div>
         </div>
       </section>
@@ -145,11 +127,13 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="reveal">
               <h3 className="text-2xl font-poppins font-bold mb-4 text-white">Who We Are</h3>
+              
+              {/* Updated description as requested */}
               <p className="text-gray-300 mb-6">
-                Nakshatra, the Astronomy and Science Club of NIT Trichy, is a community of astronomy enthusiasts dedicated to exploring the wonders of the universe. Founded with a passion for celestial observations and scientific inquiry, we provide a platform for students to engage with astronomy through various events, stargazing sessions, and projects.
+                Nakshatra, the official Astronomy and Science Club at the National Institute of Technology, Trichy, is a vibrant community for space enthusiasts and curious minds who share a fascination with the wonders of the cosmos.
               </p>
               <p className="text-gray-300 mb-6">
-                Our mission is to foster curiosity about the cosmos and promote scientific literacy among students and the wider community.
+                As one of the most active technical clubs on campus, Nakshatra serves as a platform for students to engage deeply with astronomy and space through a variety of hands-on projects, interactive discussions, and exciting events. Our mission is to bring the universe closer to everyone on campus, fueling a passion for exploration and discovery that transcends academics and exams.
               </p>
               <Link to="/about" className="inline-flex items-center text-space-blue hover:text-space-blue-light transition-colors">
                 Learn more about us <ArrowRight className="ml-2 h-4 w-4" />
@@ -168,7 +152,7 @@ const Home = () => {
       {/* Feature Boxes */}
       <section className="section bg-space-dark" ref={featuredElementsRef}>
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Events Feature */}
             <div className="space-card p-6 hover:border-space-blue transition-colors group reveal">
               <div className="flex items-center mb-4">
@@ -208,7 +192,7 @@ const Home = () => {
             </div>
             
             {/* Team Feature */}
-            <div className="space-card p-6 hover:border-space-blue transition-colors group reveal md:col-span-2 lg:col-span-1">
+            <div className="space-card p-6 hover:border-space-blue transition-colors group reveal">
               <div className="flex items-center mb-4">
                 <div className="bg-space-blue/20 p-3 rounded-lg mr-4">
                   <Users className="h-6 w-6 text-space-blue" />
@@ -224,6 +208,61 @@ const Home = () => {
               >
                 Meet the team <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Newsletter Section - Added as requested */}
+      <section className="section bg-space-darker relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20">
+          <div className="w-full h-full bg-cosmic-gradient"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="w-full md:w-1/3 flex justify-center">
+              <img 
+                src="/lovable-uploads/3e5ff8c0-177a-4b2a-9736-7a55cc335b5c.png" 
+                alt="VYOMIKA Magazine" 
+                className="max-h-96 object-cover rounded-lg shadow-xl hover-float"
+              />
+            </div>
+            
+            <div className="w-full md:w-2/3 space-y-6 reveal">
+              <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-center md:text-left">
+                <span className="gradient-text">VYOMIKA: Astronomy Magazine</span>
+              </h2>
+              
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  Introducing the inaugural edition of VYOMIKA, the exclusive bi-yearly astronomy magazine of Nakshatra. This initiative represents a thoughtful effort to present the complexities of the cosmos in an engaging, simplified manner. Rather than relying on conventional formats, VYOMIKA aims to break down intricate astronomical concepts into easily digestible content, appealing to a wide audience.
+                </p>
+                
+                <p>
+                  The magazine features a curated selection of recent developments in space research, must-know astronomical facts, lesser-known phenomena, interesting space tidbits, interactive activities, and highlights from the club's own events. Every aspect of the magazine has been carefully crafted to convey a shared passion for astronomy and to showcase the wonders of space.
+                </p>
+                
+                <p>
+                  <strong className="text-white">NOTE:</strong> While every article has been meticulously fact-checked to ensure accuracy, VYOMIKA remains open to feedback and suggestions from its readers, fostering an environment of continuous improvement. The goal is to make each edition a space where the shared fascination with the universe can thrive, inspiring further exploration and curiosity about the cosmos.
+                </p>
+              </div>
+              
+              <div className="flex flex-wrap gap-4 pt-4 justify-center md:justify-start">
+                <a 
+                  href="#" 
+                  className="btn-primary flex items-center gap-2 text-lg"
+                >
+                  <FileText className="h-5 w-5" /> Read Magazine
+                </a>
+                
+                <a 
+                  href="#" 
+                  className="btn-outline flex items-center gap-2 text-lg"
+                >
+                  <span>Flipbook Link</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -26,12 +26,17 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
                 space: {
-                  dark: "#0d1321",
-                  darker: "#081018",
+                  dark: "#040916",
+                  darker: "#030813",
                   blue: {
                     DEFAULT: "#407DFF",
                     light: "#6698FF",
                     dark: "#2E5CD9",
+                  },
+                  purple: {
+                    DEFAULT: "#7E69AB",
+                    light: "#9b87f5",
+                    dark: "#6E59A5",
                   }
                 },
 				primary: {
@@ -118,7 +123,10 @@ export default {
 			},
       fontFamily: {
         'sans': ['Inter', 'sans-serif'],
-        'poppins': ['Poppins', 'sans-serif']
+        'poppins': ['Poppins', 'sans-serif'],
+        'work-sans': ['Work Sans', 'sans-serif'],
+        'nunito': ['Nunito', 'sans-serif'],
+        'orbitron': ['Orbitron', 'sans-serif']
       },
       backgroundImage: {
         'hero-stars': "url('/stars-bg.png')",

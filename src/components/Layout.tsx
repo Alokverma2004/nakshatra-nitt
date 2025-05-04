@@ -84,15 +84,15 @@ const Layout = () => {
         }`}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2 group">
+          <Link to="/" className="flex items-center group">
             <div className="overflow-hidden">
               <img 
-                src="/lovable-uploads/7a406d95-69ac-4b48-96b1-3ff4fc2a17e7.png" 
+                src="/lovable-uploads/3e5ff8c0-177a-4b2a-9736-7a55cc335b5c.png" 
                 alt="Nakshatra Logo" 
-                className="h-8 w-auto transition-transform duration-500 group-hover:scale-110" 
+                className="h-10 w-auto transition-transform duration-500 group-hover:scale-110" 
               />
             </div>
-            <span className="text-2xl font-poppins font-bold text-white">Nakshatra</span>
+            {/* Removed Nakshatra text as requested */}
           </Link>
           
           {/* Desktop Navigation with enhanced highlight effect */}
@@ -165,9 +165,9 @@ const Layout = () => {
           </button>
         </div>
 
-        {/* Mobile Menu with animation */}
+        {/* Mobile Menu with enhanced slide-in animation */}
         <div 
-          className={`md:hidden bg-space-dark/95 backdrop-blur-lg transform transition-transform duration-300 ease-in-out ${
+          className={`md:hidden bg-space-darker/95 backdrop-blur-lg transform transition-transform duration-300 ease-in-out ${
             isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
           } absolute top-full left-0 w-full`}
         >
@@ -230,70 +230,78 @@ const Layout = () => {
         <Outlet />
       </main>
 
-      {/* Modern Footer with enhanced design */}
-      <footer className="modern-footer">
-        {/* Upper Footer with Sections */}
-        <div className="container mx-auto pt-16 pb-8 px-4">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            {/* Logo and Description */}
-            <div className="md:col-span-4 reveal">
-              <div className="flex items-start space-x-3 mb-6">
-                <img src="/lovable-uploads/7a406d95-69ac-4b48-96b1-3ff4fc2a17e7.png" alt="Nakshatra Logo" className="h-12 w-auto" />
+      {/* Modern Redesigned Footer */}
+      <footer className="bg-gradient-to-b from-space-darker to-[#051020] border-t border-space-blue/20">
+        <div className="container mx-auto pt-16 pb-10 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            {/* Brand and Description */}
+            <div className="md:col-span-5 space-y-6">
+              <div className="flex items-center space-x-3">
+                <img 
+                  src="/lovable-uploads/3e5ff8c0-177a-4b2a-9736-7a55cc335b5c.png" 
+                  alt="Nakshatra Logo" 
+                  className="h-12 w-auto"
+                />
                 <div>
                   <h3 className="text-2xl font-poppins font-bold text-white">Nakshatra</h3>
-                  <p className="text-blue-300 text-sm">Astronomy Club of NIT Trichy</p>
+                  <p className="text-blue-300 text-sm">The Astronomy & Science Club of NIT Trichy</p>
                 </div>
               </div>
-              <p className="text-gray-300 mb-6">
-                Exploring the universe one star at a time. Join us in our journey through the cosmos as we discover the wonders of astronomy.
+              
+              <p className="text-gray-300">
+                Exploring the cosmos through science, innovation, and imagination. 
+                Join us on our journey to explore and understand the fascinating wonders of our universe.
               </p>
-              <div className="flex space-x-4">
-                <a href="#" className="footer-social-icon bg-blue-900/30 rounded-full p-2.5" aria-label="Facebook">
-                  <Facebook className="h-5 w-5" />
+              
+              <div className="flex space-x-5">
+                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                  <Facebook className="h-6 w-6" />
                 </a>
-                <a href="#" className="footer-social-icon bg-blue-900/30 rounded-full p-2.5" aria-label="Instagram">
-                  <Instagram className="h-5 w-5" />
+                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                  <Instagram className="h-6 w-6" />
                 </a>
-                <a href="#" className="footer-social-icon bg-blue-900/30 rounded-full p-2.5" aria-label="LinkedIn">
-                  <Linkedin className="h-5 w-5" />
+                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                  <Linkedin className="h-6 w-6" />
                 </a>
               </div>
             </div>
             
-            {/* Quick Links */}
-            <div className="md:col-span-3 reveal">
-              <h4 className="text-lg font-semibold mb-6 text-white relative inline-block after:content-[''] after:absolute after:w-12 after:h-1 after:bg-space-blue after:-bottom-2 after:left-0">
+            {/* Quick Links - Now in two columns */}
+            <div className="md:col-span-4">
+              <h4 className="text-lg font-semibold mb-6 text-white after:content-[''] after:block after:w-10 after:h-1 after:bg-space-blue after:mt-2">
                 Quick Links
               </h4>
-              <ul className="space-y-3">
-                <li><Link to="/about" className="footer-link">About</Link></li>
-                <li><Link to="/events" className="footer-link">Events</Link></li>
-                <li><Link to="/team" className="footer-link">Team</Link></li>
-                <li><Link to="/projects" className="footer-link">Projects</Link></li>
-                <li><Link to="/gallery" className="footer-link">Gallery</Link></li>
-                <li><Link to="/contact" className="footer-link">Contact</Link></li>
-              </ul>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <ul className="space-y-3">
+                    <li><Link to="/" className="text-gray-300 hover:text-white transition-colors">Home</Link></li>
+                    <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors">About</Link></li>
+                    <li><Link to="/events" className="text-gray-300 hover:text-white transition-colors">Events</Link></li>
+                  </ul>
+                </div>
+                <div>
+                  <ul className="space-y-3">
+                    <li><Link to="/team" className="text-gray-300 hover:text-white transition-colors">Team</Link></li>
+                    <li><Link to="/projects" className="text-gray-300 hover:text-white transition-colors">Projects</Link></li>
+                    <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
+                  </ul>
+                </div>
+              </div>
             </div>
             
             {/* Contact Information */}
-            <div className="md:col-span-5 reveal">
-              <h4 className="text-lg font-semibold mb-6 text-white relative inline-block after:content-[''] after:absolute after:w-12 after:h-1 after:bg-space-blue after:-bottom-2 after:left-0">
+            <div className="md:col-span-3">
+              <h4 className="text-lg font-semibold mb-6 text-white after:content-[''] after:block after:w-10 after:h-1 after:bg-space-blue after:mt-2">
                 Contact Us
               </h4>
-              <address className="not-italic">
-                <div className="space-y-4">
-                  <p className="text-gray-300 flex items-start">
-                    <span className="mr-3 mt-1 text-blue-300">📍</span>
-                    <span>National Institute of Technology<br />Tiruchirappalli, Tamil Nadu 620015</span>
-                  </p>
-                  <p className="text-gray-300 flex items-center">
-                    <span className="mr-3 text-blue-300">✉️</span>
-                    <span>nakshatra@nitt.edu</span>
-                  </p>
-                  <p className="text-gray-300 flex items-center">
-                    <span className="mr-3 text-blue-300">📞</span>
-                    <span>+91 9876543210</span>
-                  </p>
+              <address className="not-italic space-y-4">
+                <div className="flex items-start">
+                  <span className="mr-3 text-blue-400">📍</span>
+                  <span className="text-gray-300">National Institute of Technology,<br />Tiruchirappalli, Tamil Nadu 620015</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="mr-3 text-blue-400">✉️</span>
+                  <a href="mailto:nakshatra@nitt.edu" className="text-gray-300 hover:text-white transition-colors">nakshatra@nitt.edu</a>
                 </div>
               </address>
             </div>
@@ -301,17 +309,13 @@ const Layout = () => {
         </div>
         
         {/* Copyright Bar */}
-        <div className="bg-space-darker py-4 border-t border-blue-900/20">
-          <div className="container mx-auto px-4 text-center md:text-left md:flex md:justify-between md:items-center">
+        <div className="bg-space-darker/80 py-4 backdrop-blur-sm border-t border-white/5">
+          <div className="container mx-auto px-4 text-center md:flex md:justify-between md:items-center">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Nakshatra - The Astronomy Club, NIT Trichy. All rights reserved.
+              © {new Date().getFullYear()} Nakshatra - The Astronomy & Science Club, NIT Trichy. All rights reserved.
             </p>
             <div className="mt-3 md:mt-0">
-              <ul className="flex justify-center md:justify-start space-x-6 text-sm">
-                <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link></li>
-                <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Terms of Use</Link></li>
-                <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Sitemap</Link></li>
-              </ul>
+              <p className="text-xs text-gray-500">Designed with 💫 by Nakshatra Team</p>
             </div>
           </div>
         </div>
