@@ -88,6 +88,12 @@ const StarBackground = () => {
       color = '#FFFFFF', 
       glowColor = 'rgba(110, 180, 255, 0.8)'
     ) => {
+      // Check for invalid values before drawing
+      if (!isFinite(x) || !isFinite(y) || !isFinite(size) || !isFinite(opacity)) {
+        console.warn('Invalid star parameters:', { x, y, size, opacity });
+        return; // Skip drawing this star if values are invalid
+      }
+
       ctx.beginPath();
       
       // Main star body
@@ -95,18 +101,25 @@ const StarBackground = () => {
       ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
       ctx.fill();
       
-      // Glow effect
-      const gradient = ctx.createRadialGradient(
-        x, y, 0,
-        x, y, size * 3
-      );
-      gradient.addColorStop(0, glowColor.replace('0.8', opacity.toString()));
-      gradient.addColorStop(1, 'rgba(110, 180, 255, 0)');
-      
-      ctx.beginPath();
-      ctx.arc(x, y, size * 3, 0, Math.PI * 2);
-      ctx.fillStyle = gradient;
-      ctx.fill();
+      // Glow effect - Only create gradient if size is valid
+      if (size > 0) {
+        const glowRadius = size * 3;
+        try {
+          const gradient = ctx.createRadialGradient(
+            x, y, 0,
+            x, y, glowRadius
+          );
+          gradient.addColorStop(0, glowColor.replace('0.8', opacity.toString()));
+          gradient.addColorStop(1, 'rgba(110, 180, 255, 0)');
+          
+          ctx.beginPath();
+          ctx.arc(x, y, glowRadius, 0, Math.PI * 2);
+          ctx.fillStyle = gradient;
+          ctx.fill();
+        } catch (error) {
+          console.error('Error creating gradient:', error);
+        }
+      }
       
       // Add rays for larger stars
       if (size > 1.5) {
