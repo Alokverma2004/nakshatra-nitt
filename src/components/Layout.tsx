@@ -87,7 +87,7 @@ const Layout = () => {
           <Link to="/" className="flex items-center group">
             <div className="overflow-hidden">
               <img 
-                src="/lovable-uploads/3e5ff8c0-177a-4b2a-9736-7a55cc335b5c.png" 
+                src="/lovable-uploads/nakshatra-logo-new.png" 
                 alt="Nakshatra Logo" 
                 className="h-10 w-auto transition-transform duration-500 group-hover:scale-110" 
               />
@@ -158,7 +158,7 @@ const Layout = () => {
           {/* Mobile Menu Button with animation */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white p-2 transition-transform duration-300 hover:rotate-180"
+            className="md:hidden text-white p-2 transition-transform duration-300 hover:rotate-180 z-50"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -167,60 +167,72 @@ const Layout = () => {
 
         {/* Mobile Menu with enhanced slide-in animation */}
         <div 
-          className={`md:hidden bg-space-darker/95 backdrop-blur-lg transform transition-transform duration-300 ease-in-out ${
+          className={`md:hidden fixed inset-0 bg-space-darker/95 backdrop-blur-lg transform transition-transform duration-300 ease-in-out ${
             isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
-          } absolute top-full left-0 w-full`}
+          } pt-20 z-40`}
         >
           <div className="container mx-auto px-4 py-6 flex flex-col space-y-4">
             <NavLink 
               to="/" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
+              className={({ isActive }) => `py-4 px-4 text-xl border-b border-gray-800 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Home
             </NavLink>
             <NavLink 
               to="/about" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
+              className={({ isActive }) => `py-4 px-4 text-xl border-b border-gray-800 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About
             </NavLink>
             <NavLink 
               to="/events" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
+              className={({ isActive }) => `py-4 px-4 text-xl border-b border-gray-800 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Events
             </NavLink>
             <NavLink 
               to="/team" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
+              className={({ isActive }) => `py-4 px-4 text-xl border-b border-gray-800 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Team
             </NavLink>
             <NavLink 
               to="/projects" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
+              className={({ isActive }) => `py-4 px-4 text-xl border-b border-gray-800 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Projects
             </NavLink>
             <NavLink 
               to="/gallery" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
+              className={({ isActive }) => `py-4 px-4 text-xl border-b border-gray-800 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Gallery
             </NavLink>
             <NavLink 
               to="/contact" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
+              className={({ isActive }) => `py-4 px-4 text-xl border-b border-gray-800 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
             </NavLink>
+            
+            <div className="pt-8 flex justify-center space-x-6">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                <Facebook className="h-7 w-7" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                <Instagram className="h-7 w-7" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                <Linkedin className="h-7 w-7" />
+              </a>
+            </div>
           </div>
         </div>
       </header>
@@ -230,15 +242,15 @@ const Layout = () => {
         <Outlet />
       </main>
 
-      {/* Modern Redesigned Footer */}
-      <footer className="bg-gradient-to-b from-space-darker to-[#051020] border-t border-space-blue/20">
+      {/* Improved Modern Footer */}
+      <footer className="bg-gradient-to-b from-[#061326] to-[#030914] border-t border-space-blue/20">
         <div className="container mx-auto pt-16 pb-10 px-4">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
             {/* Brand and Description */}
             <div className="md:col-span-5 space-y-6">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/lovable-uploads/3e5ff8c0-177a-4b2a-9736-7a55cc335b5c.png" 
+                  src="/lovable-uploads/nakshatra-logo-new.png" 
                   alt="Nakshatra Logo" 
                   className="h-12 w-auto"
                 />
@@ -254,19 +266,19 @@ const Layout = () => {
               </p>
               
               <div className="flex space-x-5">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                <a href="#" className="text-blue-300 hover:text-white transition-colors duration-300 transform hover:scale-110">
                   <Facebook className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                <a href="#" className="text-blue-300 hover:text-white transition-colors duration-300 transform hover:scale-110">
                   <Instagram className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                <a href="#" className="text-blue-300 hover:text-white transition-colors duration-300 transform hover:scale-110">
                   <Linkedin className="h-6 w-6" />
                 </a>
               </div>
             </div>
             
-            {/* Quick Links - Now in two columns */}
+            {/* Quick Links - Now in two columns with better visibility */}
             <div className="md:col-span-4">
               <h4 className="text-lg font-semibold mb-6 text-white after:content-[''] after:block after:w-10 after:h-1 after:bg-space-blue after:mt-2">
                 Quick Links
@@ -274,22 +286,22 @@ const Layout = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <ul className="space-y-3">
-                    <li><Link to="/" className="text-gray-300 hover:text-white transition-colors">Home</Link></li>
-                    <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors">About</Link></li>
-                    <li><Link to="/events" className="text-gray-300 hover:text-white transition-colors">Events</Link></li>
+                    <li><Link to="/" className="text-blue-200 hover:text-white transition-colors">Home</Link></li>
+                    <li><Link to="/about" className="text-blue-200 hover:text-white transition-colors">About</Link></li>
+                    <li><Link to="/events" className="text-blue-200 hover:text-white transition-colors">Events</Link></li>
                   </ul>
                 </div>
                 <div>
                   <ul className="space-y-3">
-                    <li><Link to="/team" className="text-gray-300 hover:text-white transition-colors">Team</Link></li>
-                    <li><Link to="/projects" className="text-gray-300 hover:text-white transition-colors">Projects</Link></li>
-                    <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
+                    <li><Link to="/team" className="text-blue-200 hover:text-white transition-colors">Team</Link></li>
+                    <li><Link to="/projects" className="text-blue-200 hover:text-white transition-colors">Projects</Link></li>
+                    <li><Link to="/contact" className="text-blue-200 hover:text-white transition-colors">Contact</Link></li>
                   </ul>
                 </div>
               </div>
             </div>
             
-            {/* Contact Information */}
+            {/* Contact Information with improved visibility */}
             <div className="md:col-span-3">
               <h4 className="text-lg font-semibold mb-6 text-white after:content-[''] after:block after:w-10 after:h-1 after:bg-space-blue after:mt-2">
                 Contact Us
@@ -297,25 +309,25 @@ const Layout = () => {
               <address className="not-italic space-y-4">
                 <div className="flex items-start">
                   <span className="mr-3 text-blue-400">📍</span>
-                  <span className="text-gray-300">National Institute of Technology,<br />Tiruchirappalli, Tamil Nadu 620015</span>
+                  <span className="text-blue-200">National Institute of Technology,<br />Tiruchirappalli, Tamil Nadu 620015</span>
                 </div>
                 <div className="flex items-center">
                   <span className="mr-3 text-blue-400">✉️</span>
-                  <a href="mailto:nakshatra@nitt.edu" className="text-gray-300 hover:text-white transition-colors">nakshatra@nitt.edu</a>
+                  <a href="mailto:nakshatra@nitt.edu" className="text-blue-200 hover:text-white transition-colors">nakshatra@nitt.edu</a>
                 </div>
               </address>
             </div>
           </div>
         </div>
         
-        {/* Copyright Bar */}
-        <div className="bg-space-darker/80 py-4 backdrop-blur-sm border-t border-white/5">
+        {/* Copyright Bar with improved contrast */}
+        <div className="bg-[#040b17] py-4 backdrop-blur-sm border-t border-white/10">
           <div className="container mx-auto px-4 text-center md:flex md:justify-between md:items-center">
-            <p className="text-gray-400 text-sm">
+            <p className="text-blue-200 text-sm">
               © {new Date().getFullYear()} Nakshatra - The Astronomy & Science Club, NIT Trichy. All rights reserved.
             </p>
             <div className="mt-3 md:mt-0">
-              <p className="text-xs text-gray-500">Designed with 💫 by Nakshatra Team</p>
+              <p className="text-xs text-blue-300">Designed with 💫 by Nakshatra Team</p>
             </div>
           </div>
         </div>

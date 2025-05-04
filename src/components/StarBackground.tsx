@@ -42,16 +42,16 @@ const StarBackground = () => {
       midgroundStars = [];
       foregroundStars = [];
       
-      // Create stars with varying properties
-      const starCount = Math.min(Math.floor(window.innerWidth * window.innerHeight / 1000), 300);
+      // Create stars with varying properties - reduced count for less visual intensity
+      const starCount = Math.min(Math.floor(window.innerWidth * window.innerHeight / 1500), 200);
       
       // Background stars (smallest, most numerous)
       for (let i = 0; i < starCount * 0.6; i++) {
         backgroundStars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 1.2 + 0.3,
-          opacity: Math.random() * 0.5 + 0.3,
+          size: Math.random() * 1 + 0.3,
+          opacity: Math.random() * 0.3 + 0.2,
           twinkleSpeed: Math.random() * 0.01 + 0.002
         });
       }
@@ -61,8 +61,8 @@ const StarBackground = () => {
         midgroundStars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 1.8 + 0.8,
-          opacity: Math.random() * 0.6 + 0.4,
+          size: Math.random() * 1.5 + 0.8,
+          opacity: Math.random() * 0.4 + 0.3,
           twinkleSpeed: Math.random() * 0.015 + 0.005
         });
       }
@@ -72,8 +72,8 @@ const StarBackground = () => {
         foregroundStars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 2.5 + 1.5,
-          opacity: Math.random() * 0.7 + 0.6,
+          size: Math.random() * 2 + 1.2,
+          opacity: Math.random() * 0.5 + 0.4,
           twinkleSpeed: Math.random() * 0.02 + 0.01
         });
       }
@@ -86,7 +86,7 @@ const StarBackground = () => {
       size: number, 
       opacity: number, 
       color = '#FFFFFF', 
-      glowColor = 'rgba(110, 180, 255, 0.8)'
+      glowColor = 'rgba(110, 180, 255, 0.6)'
     ) => {
       // Check for invalid values before drawing
       if (!isFinite(x) || !isFinite(y) || !isFinite(size) || !isFinite(opacity)) {
@@ -103,13 +103,13 @@ const StarBackground = () => {
       
       // Glow effect - Only create gradient if size is valid
       if (size > 0) {
-        const glowRadius = size * 3;
+        const glowRadius = size * 2.5; // Reduced glow radius
         try {
           const gradient = ctx.createRadialGradient(
             x, y, 0,
             x, y, glowRadius
           );
-          gradient.addColorStop(0, glowColor.replace('0.8', opacity.toString()));
+          gradient.addColorStop(0, glowColor.replace('0.6', (opacity * 0.8).toString()));
           gradient.addColorStop(1, 'rgba(110, 180, 255, 0)');
           
           ctx.beginPath();
@@ -121,44 +121,25 @@ const StarBackground = () => {
         }
       }
       
-      // Add rays for larger stars
-      if (size > 1.5) {
-        const rayLength = size * 5;
-        const rayWidth = size * 0.4;
+      // Add rays for larger stars - simplified for less visual noise
+      if (size > 1.8) {
+        const rayLength = size * 4;
+        const rayWidth = size * 0.3;
         
         // Horizontal ray
         ctx.beginPath();
         ctx.moveTo(x - rayLength, y);
         ctx.lineTo(x + rayLength, y);
         ctx.lineWidth = rayWidth;
-        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.3})`;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.2})`;
         ctx.stroke();
         
         // Vertical ray
         ctx.beginPath();
         ctx.moveTo(x, y - rayLength);
         ctx.lineTo(x, y + rayLength);
-        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.3})`;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.2})`;
         ctx.stroke();
-        
-        // Diagonal rays for the largest stars
-        if (size > 2) {
-          const diagonalLength = rayLength * 0.7;
-          
-          // Diagonal ray 1
-          ctx.beginPath();
-          ctx.moveTo(x - diagonalLength * 0.7, y - diagonalLength * 0.7);
-          ctx.lineTo(x + diagonalLength * 0.7, y + diagonalLength * 0.7);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.2})`;
-          ctx.stroke();
-          
-          // Diagonal ray 2
-          ctx.beginPath();
-          ctx.moveTo(x - diagonalLength * 0.7, y + diagonalLength * 0.7);
-          ctx.lineTo(x + diagonalLength * 0.7, y - diagonalLength * 0.7);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.2})`;
-          ctx.stroke();
-        }
       }
     };
     
@@ -167,15 +148,15 @@ const StarBackground = () => {
     
     // Animation function
     const animate = () => {
-      // Clear canvas with a slight trail effect
-      ctx.fillStyle = 'rgba(4, 9, 20, 0.2)';
+      // Clear canvas with a deeper space background and slight trail effect
+      ctx.fillStyle = 'rgba(4, 9, 22, 0.3)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       // Increment time
-      time += 0.005;
+      time += 0.004; // Slowed down animation
       
       // Calculate parallax offsets based on mouse position
-      const maxOffset = 5; // Maximum pixel offset
+      const maxOffset = 3; // Reduced parallax effect
       const centerX = dimensions.width / 2;
       const centerY = dimensions.height / 2;
       
@@ -185,51 +166,51 @@ const StarBackground = () => {
       // Draw stars with parallax effect
       // Background stars (minimal parallax)
       for (const star of backgroundStars) {
-        const opacity = Math.sin(time * star.twinkleSpeed * 10) * 0.2 + star.opacity;
+        const opacity = Math.sin(time * star.twinkleSpeed * 10) * 0.15 + star.opacity;
         drawStar(
-          star.x + offsetX * 0.2, 
-          star.y + offsetY * 0.2, 
+          star.x + offsetX * 0.1, 
+          star.y + offsetY * 0.1, 
           star.size, 
           opacity, 
           '#FFFFFF', 
-          'rgba(255, 255, 255, 0.4)'
+          'rgba(255, 255, 255, 0.3)'
         );
       }
       
       // Midground stars (medium parallax)
       for (const star of midgroundStars) {
-        const opacity = Math.sin(time * star.twinkleSpeed * 20) * 0.3 + star.opacity;
+        const opacity = Math.sin(time * star.twinkleSpeed * 15) * 0.2 + star.opacity;
         drawStar(
-          star.x + offsetX * 0.5, 
-          star.y + offsetY * 0.5, 
+          star.x + offsetX * 0.3, 
+          star.y + offsetY * 0.3, 
           star.size, 
           opacity, 
           '#FFFFFF', 
-          'rgba(180, 210, 255, 0.6)'
+          'rgba(180, 210, 255, 0.4)'
         );
       }
       
       // Foreground stars (most parallax)
       for (const star of foregroundStars) {
-        const opacity = Math.sin(time * star.twinkleSpeed * 30) * 0.4 + star.opacity;
+        const opacity = Math.sin(time * star.twinkleSpeed * 20) * 0.25 + star.opacity;
         drawStar(
-          star.x + offsetX, 
-          star.y + offsetY, 
+          star.x + offsetX * 0.6, 
+          star.y + offsetY * 0.6, 
           star.size, 
           opacity, 
           '#FFFFFF', 
-          'rgba(110, 180, 255, 0.8)'
+          'rgba(110, 180, 255, 0.5)'
         );
       }
       
-      // Add occasional shooting stars
-      if (Math.random() < 0.001) {
+      // Add occasional shooting stars - reduced frequency
+      if (Math.random() < 0.0005) {
         const shootingStar = {
           x: Math.random() * canvas.width,
           y: Math.random() * (canvas.height / 3),
-          length: Math.random() * 100 + 50,
+          length: Math.random() * 80 + 40,
           angle: Math.PI / 4 + (Math.random() * Math.PI / 4),
-          speed: Math.random() * 5 + 10
+          speed: Math.random() * 4 + 8
         };
         
         setTimeout(() => {
@@ -244,7 +225,7 @@ const StarBackground = () => {
     // Draw a shooting star
     const drawShootingStar = (startX: number, startY: number, length: number, angle: number, speed: number) => {
       let currentLength = 0;
-      let opacity = 1;
+      let opacity = 0.8;
       
       const animateShootingStar = () => {
         if (currentLength <= length && opacity > 0) {
@@ -257,15 +238,15 @@ const StarBackground = () => {
           ctx.moveTo(startX, startY);
           ctx.lineTo(endX, endY);
           ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-          ctx.lineWidth = 2;
+          ctx.lineWidth = 1.5;
           ctx.stroke();
           
           // Trail glow
           ctx.beginPath();
           ctx.moveTo(startX, startY);
           ctx.lineTo(endX, endY);
-          ctx.strokeStyle = `rgba(110, 180, 255, ${opacity * 0.5})`;
-          ctx.lineWidth = 4;
+          ctx.strokeStyle = `rgba(110, 180, 255, ${opacity * 0.4})`;
+          ctx.lineWidth = 3;
           ctx.stroke();
           
           // Update for next frame
@@ -299,7 +280,7 @@ const StarBackground = () => {
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
       style={{ 
-        background: 'radial-gradient(circle at center, #0a1a2f 0%, #051020 70%, #030915 100%)'
+        background: 'radial-gradient(circle at center, #0c1a2c 0%, #071224 70%, #040b18 100%)'
       }}
     />
   );
