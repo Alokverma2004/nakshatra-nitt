@@ -191,6 +191,11 @@
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
+  
+  /* Shimmer animation for text */
+  .animate-shimmer {
+    animation: shimmer 3s infinite linear;
+  }
 }
 
 /* Navbar scroll highlight */
@@ -280,3 +285,4 @@
     @apply py-14;
   }
 }
+

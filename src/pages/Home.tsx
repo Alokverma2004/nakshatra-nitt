@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import StarBackground from '../components/StarBackground';
@@ -70,35 +69,35 @@ const Home = () => {
       <StarBackground />
       
       {/* Hero Section with Parallax Effect */}
-      <section className="relative h-screen flex items-center justify-center text-center px-4 parallax-container">
+      <section className="relative min-h-[100vh] flex items-center justify-center text-center px-4 parallax-container">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-space-darker/50 via-space-dark to-space-dark"></div>
         </div>
         
-        <div className="container mx-auto relative z-10">
+        <div className="container mx-auto relative z-10 py-16 md:py-0">
           {/* Logo with animation */}
           <div className="mb-6 animate-float">
             <img 
-              src="/lovable-uploads/3e5ff8c0-177a-4b2a-9736-7a55cc335b5c.png" 
+              src="/lovable-uploads/17c8b972-7058-4743-930b-750bcc504672.png" 
               alt="Nakshatra Logo" 
-              className="h-32 mx-auto hover-glow transition-all duration-500"
+              className="h-24 sm:h-28 md:h-32 mx-auto hover-glow transition-all duration-500"
             />
           </div>
 
-          <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold font-poppins mb-6 leading-tight transition-all duration-1000 ease-out gradient-text ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <span className="text-white">Nakshatra</span>
+          <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-poppins mb-6 leading-tight transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-white to-blue-300 animate-shimmer bg-[length:200%_auto]">Nakshatra</span>
           </h1>
           
           {/* Updated tagline */}
-          <p className={`text-xl md:text-2xl font-work-sans text-sky-200 mb-10 max-w-3xl mx-auto transition-all duration-1000 delay-300 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p className={`text-lg sm:text-xl md:text-2xl font-work-sans text-sky-200 mb-10 max-w-3xl mx-auto transition-all duration-1000 delay-300 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             The Astronomy and Science Club of NIT Trichy
           </p>
           
           <div className={`flex flex-wrap justify-center gap-4 transition-all duration-1000 delay-500 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <Link to="/about" className="btn-primary text-lg font-medium glow-on-hover group">
+            <Link to="/about" className="btn-primary text-base sm:text-lg font-medium glow-on-hover group">
               <span className="relative z-10">Explore</span>
             </Link>
-            <Link to="/events" className="btn-outline text-lg font-medium glow-on-hover group">
+            <Link to="/events" className="btn-outline text-base sm:text-lg font-medium glow-on-hover group">
               <span className="relative z-10">Upcoming Events</span>
             </Link>
           </div>
@@ -142,7 +141,7 @@ const Home = () => {
             <div className="space-card p-6 reveal">
               <ImageCarousel 
                 images={cosmosImages}
-                className="h-72"
+                className="h-64 sm:h-72"
               />
             </div>
           </div>
@@ -220,16 +219,16 @@ const Home = () => {
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="w-full md:w-1/3 flex justify-center">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="w-full lg:w-1/3 flex justify-center">
               <img 
-                src="/lovable-uploads/3e5ff8c0-177a-4b2a-9736-7a55cc335b5c.png" 
+                src="/lovable-uploads/17c8b972-7058-4743-930b-750bcc504672.png" 
                 alt="VYOMIKA Magazine" 
-                className="max-h-96 object-cover rounded-lg shadow-xl hover-float"
+                className="max-h-64 sm:max-h-80 md:max-h-96 object-cover rounded-lg shadow-xl hover-float"
               />
             </div>
             
-            <div className="w-full md:w-2/3 space-y-6 reveal">
+            <div className="w-full lg:w-2/3 space-y-6 reveal">
               <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-center md:text-left">
                 <span className="gradient-text">VYOMIKA: Astronomy Magazine</span>
               </h2>
@@ -269,7 +268,7 @@ const Home = () => {
       </section>
       
       {/* Call to Action */}
-      <section className="py-20 bg-space-dark relative">
+      <section className="py-16 sm:py-20 bg-space-dark relative">
         <div className="absolute inset-0 z-0">
           <div className="w-full h-full bg-cosmic-gradient opacity-10"></div>
         </div>

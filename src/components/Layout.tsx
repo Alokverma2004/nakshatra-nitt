@@ -87,7 +87,7 @@ const Layout = () => {
           <Link to="/" className="flex items-center group">
             <div className="overflow-hidden">
               <img 
-                src="/lovable-uploads/nakshatra-logo-new.png" 
+                src="/lovable-uploads/17c8b972-7058-4743-930b-750bcc504672.png" 
                 alt="Nakshatra Logo" 
                 className="h-10 w-auto transition-transform duration-500 group-hover:scale-110" 
               />
@@ -250,7 +250,7 @@ const Layout = () => {
             <div className="md:col-span-5 space-y-6">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/lovable-uploads/nakshatra-logo-new.png" 
+                  src="/lovable-uploads/17c8b972-7058-4743-930b-750bcc504672.png" 
                   alt="Nakshatra Logo" 
                   className="h-12 w-auto"
                 />
