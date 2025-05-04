@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
@@ -170,7 +171,7 @@ const Team = () => {
       {/* Hero Section */}
       <section className="relative py-32 bg-space-darker">
         <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-space-purple/30 via-transparent to-transparent opacity-50"></div>
+          <div className="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-space-blue/30 via-transparent to-transparent opacity-50"></div>
         </div>
         
         <div className="container mx-auto px-4 relative z-10 text-center">
@@ -188,16 +189,16 @@ const Team = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 reveal">
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 heading">Faculty Advisor</h2>
-            <div className="w-24 h-1 bg-space-purple mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-space-blue mx-auto mt-4"></div>
           </div>
           
           <div className="max-w-xl mx-auto">
-            <Card className="space-card hover:border-space-purple transition-all duration-300 reveal team-card overflow-hidden">
+            <Card className="space-card hover:border-space-blue transition-all duration-300 reveal team-card overflow-hidden">
               <CardContent className="p-0">
                 <div className="flex flex-col items-center p-6 relative">
-                  <div className="absolute inset-0 bg-gradient-to-b from-space-purple/20 to-transparent opacity-40"></div>
+                  <div className="absolute inset-0 bg-gradient-to-b from-space-blue/20 to-transparent opacity-40"></div>
                   <div className="relative z-10 flex flex-col items-center">
-                    <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-2 border-space-purple ring-4 ring-space-purple/30">
+                    <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-2 border-space-blue ring-4 ring-space-blue/30">
                       <img 
                         src={facultyAdvisor.image} 
                         alt={facultyAdvisor.name} 
@@ -206,7 +207,7 @@ const Team = () => {
                     </div>
                     <div className="text-center">
                       <h3 className="text-2xl font-bold text-white mb-2">{facultyAdvisor.name}</h3>
-                      <p className="text-space-purple-light text-lg mb-1">{facultyAdvisor.role}</p>
+                      <p className="text-space-blue-light text-lg mb-1">{facultyAdvisor.role}</p>
                       <p className="text-gray-300">{facultyAdvisor.department}</p>
                     </div>
                   </div>
@@ -217,12 +218,12 @@ const Team = () => {
         </div>
       </section>
       
-      {/* Core Team Members */}
-      <section className="section bg-space-dark">
+      {/* Core Team Members - with extra spacing */}
+      <section className="section bg-space-dark pt-28">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 reveal">
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 heading">Core Team</h2>
-            <div className="w-24 h-1 bg-space-purple mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-space-blue mx-auto mt-4"></div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -239,7 +240,7 @@ const Team = () => {
                     />
                     <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
                       <h3 className="text-xl font-bold text-white">{member.name}</h3>
-                      <p className="text-space-purple-light">{member.role}</p>
+                      <p className="text-space-blue-light">{member.role}</p>
                     </div>
                   </div>
                   
@@ -279,7 +280,7 @@ const Team = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 reveal">
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 heading">Other Team Members</h2>
-            <div className="w-24 h-1 bg-space-purple mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-space-blue mx-auto mt-4"></div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -296,7 +297,7 @@ const Team = () => {
                     />
                     <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
                       <h3 className="text-xl font-bold text-white">{member.name}</h3>
-                      <p className="text-space-purple-light">{member.role}</p>
+                      <p className="text-space-blue-light">{member.role}</p>
                     </div>
                   </div>
                   
@@ -336,7 +337,7 @@ const Team = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 reveal">
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 heading">Past Core Team</h2>
-            <div className="w-24 h-1 bg-space-purple mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-space-blue mx-auto mt-4"></div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -353,7 +354,7 @@ const Team = () => {
                     />
                     <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
                       <h3 className="text-xl font-bold text-white">{member.name}</h3>
-                      <p className="text-space-purple-light">{member.role}</p>
+                      <p className="text-space-blue-light">{member.role}</p>
                     </div>
                   </div>
                   

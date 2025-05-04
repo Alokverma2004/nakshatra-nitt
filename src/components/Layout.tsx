@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { Outlet, NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, Facebook, Instagram, Linkedin } from 'lucide-react';
@@ -86,7 +87,7 @@ const Layout = () => {
           <Link to="/" className="flex items-center space-x-2 group">
             <div className="overflow-hidden">
               <img 
-                src="/lovable-uploads/nakshatra-logo.png" 
+                src="/lovable-uploads/7a406d95-69ac-4b48-96b1-3ff4fc2a17e7.png" 
                 alt="Nakshatra Logo" 
                 className="h-8 w-auto transition-transform duration-500 group-hover:scale-110" 
               />
@@ -99,7 +100,7 @@ const Layout = () => {
             <NavLink 
               to="/" 
               className={({ isActive }) => 
-                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-purple-light transition-colors duration-300`
+                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-blue-light transition-colors duration-300`
               }
             >
               Home
@@ -107,7 +108,7 @@ const Layout = () => {
             <NavLink 
               to="/about" 
               className={({ isActive }) => 
-                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-purple-light transition-colors duration-300`
+                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-blue-light transition-colors duration-300`
               }
             >
               About
@@ -115,7 +116,7 @@ const Layout = () => {
             <NavLink 
               to="/events" 
               className={({ isActive }) => 
-                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-purple-light transition-colors duration-300`
+                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-blue-light transition-colors duration-300`
               }
             >
               Events
@@ -123,7 +124,7 @@ const Layout = () => {
             <NavLink 
               to="/team" 
               className={({ isActive }) => 
-                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-purple-light transition-colors duration-300`
+                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-blue-light transition-colors duration-300`
               }
             >
               Team
@@ -131,7 +132,7 @@ const Layout = () => {
             <NavLink 
               to="/projects" 
               className={({ isActive }) => 
-                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-purple-light transition-colors duration-300`
+                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-blue-light transition-colors duration-300`
               }
             >
               Projects
@@ -139,7 +140,7 @@ const Layout = () => {
             <NavLink 
               to="/gallery" 
               className={({ isActive }) => 
-                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-purple-light transition-colors duration-300`
+                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-blue-light transition-colors duration-300`
               }
             >
               Gallery
@@ -147,7 +148,7 @@ const Layout = () => {
             <NavLink 
               to="/contact" 
               className={({ isActive }) => 
-                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-purple-light transition-colors duration-300`
+                `nav-link ${isActive ? 'text-white after:w-full' : 'text-gray-300'} hover:text-space-blue-light transition-colors duration-300`
               }
             >
               Contact
@@ -173,49 +174,49 @@ const Layout = () => {
           <div className="container mx-auto px-4 py-6 flex flex-col space-y-4">
             <NavLink 
               to="/" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-purple' : 'text-white'}`}
+              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Home
             </NavLink>
             <NavLink 
               to="/about" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-purple' : 'text-white'}`}
+              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About
             </NavLink>
             <NavLink 
               to="/events" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-purple' : 'text-white'}`}
+              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Events
             </NavLink>
             <NavLink 
               to="/team" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-purple' : 'text-white'}`}
+              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Team
             </NavLink>
             <NavLink 
               to="/projects" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-purple' : 'text-white'}`}
+              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Projects
             </NavLink>
             <NavLink 
               to="/gallery" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-purple' : 'text-white'}`}
+              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Gallery
             </NavLink>
             <NavLink 
               to="/contact" 
-              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-purple' : 'text-white'}`}
+              className={({ isActive }) => `py-2 px-4 ${isActive ? 'text-space-blue' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
@@ -229,53 +230,89 @@ const Layout = () => {
         <Outlet />
       </main>
 
-      {/* Footer with improved design */}
-      <footer className="bg-space-darker py-10">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="reveal">
-              <div className="flex items-center space-x-2 mb-4">
-                <img src="/lovable-uploads/nakshatra-logo.png" alt="Nakshatra Logo" className="h-8 w-auto" />
-                <h3 className="text-xl font-poppins font-bold text-white">Nakshatra</h3>
+      {/* Modern Footer with enhanced design */}
+      <footer className="modern-footer">
+        {/* Upper Footer with Sections */}
+        <div className="container mx-auto pt-16 pb-8 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            {/* Logo and Description */}
+            <div className="md:col-span-4 reveal">
+              <div className="flex items-start space-x-3 mb-6">
+                <img src="/lovable-uploads/7a406d95-69ac-4b48-96b1-3ff4fc2a17e7.png" alt="Nakshatra Logo" className="h-12 w-auto" />
+                <div>
+                  <h3 className="text-2xl font-poppins font-bold text-white">Nakshatra</h3>
+                  <p className="text-blue-300 text-sm">Astronomy Club of NIT Trichy</p>
+                </div>
               </div>
-              <p className="text-gray-400">
-                The Astronomy and Science Club of NIT Trichy, exploring the universe one star at a time.
+              <p className="text-gray-300 mb-6">
+                Exploring the universe one star at a time. Join us in our journey through the cosmos as we discover the wonders of astronomy.
               </p>
-              <div className="mt-4 flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+              <div className="flex space-x-4">
+                <a href="#" className="footer-social-icon bg-blue-900/30 rounded-full p-2.5" aria-label="Facebook">
                   <Facebook className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+                <a href="#" className="footer-social-icon bg-blue-900/30 rounded-full p-2.5" aria-label="Instagram">
                   <Instagram className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
+                <a href="#" className="footer-social-icon bg-blue-900/30 rounded-full p-2.5" aria-label="LinkedIn">
                   <Linkedin className="h-5 w-5" />
                 </a>
               </div>
             </div>
-            <div className="reveal">
-              <h3 className="text-xl font-poppins font-bold mb-4 text-white">Quick Links</h3>
-              <ul className="space-y-2">
-                <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">About</Link></li>
-                <li><Link to="/events" className="text-gray-400 hover:text-white transition-colors">Events</Link></li>
-                <li><Link to="/team" className="text-gray-400 hover:text-white transition-colors">Team</Link></li>
-                <li><Link to="/projects" className="text-gray-400 hover:text-white transition-colors">Projects</Link></li>
-                <li><Link to="/gallery" className="text-gray-400 hover:text-white transition-colors">Gallery</Link></li>
-                <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
+            
+            {/* Quick Links */}
+            <div className="md:col-span-3 reveal">
+              <h4 className="text-lg font-semibold mb-6 text-white relative inline-block after:content-[''] after:absolute after:w-12 after:h-1 after:bg-space-blue after:-bottom-2 after:left-0">
+                Quick Links
+              </h4>
+              <ul className="space-y-3">
+                <li><Link to="/about" className="footer-link">About</Link></li>
+                <li><Link to="/events" className="footer-link">Events</Link></li>
+                <li><Link to="/team" className="footer-link">Team</Link></li>
+                <li><Link to="/projects" className="footer-link">Projects</Link></li>
+                <li><Link to="/gallery" className="footer-link">Gallery</Link></li>
+                <li><Link to="/contact" className="footer-link">Contact</Link></li>
               </ul>
             </div>
-            <div className="reveal">
-              <h3 className="text-xl font-poppins font-bold mb-4 text-white">Contact Us</h3>
-              <address className="not-italic text-gray-400">
-                <p>National Institute of Technology</p>
-                <p>Tiruchirappalli, Tamil Nadu 620015</p>
-                <p className="mt-2">Email: nakshatra@nitt.edu</p>
-                <p>Phone: +91 9876543210</p>
+            
+            {/* Contact Information */}
+            <div className="md:col-span-5 reveal">
+              <h4 className="text-lg font-semibold mb-6 text-white relative inline-block after:content-[''] after:absolute after:w-12 after:h-1 after:bg-space-blue after:-bottom-2 after:left-0">
+                Contact Us
+              </h4>
+              <address className="not-italic">
+                <div className="space-y-4">
+                  <p className="text-gray-300 flex items-start">
+                    <span className="mr-3 mt-1 text-blue-300">📍</span>
+                    <span>National Institute of Technology<br />Tiruchirappalli, Tamil Nadu 620015</span>
+                  </p>
+                  <p className="text-gray-300 flex items-center">
+                    <span className="mr-3 text-blue-300">✉️</span>
+                    <span>nakshatra@nitt.edu</span>
+                  </p>
+                  <p className="text-gray-300 flex items-center">
+                    <span className="mr-3 text-blue-300">📞</span>
+                    <span>+91 9876543210</span>
+                  </p>
+                </div>
               </address>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-6 text-center">
-            <p className="text-gray-400">© {new Date().getFullYear()} Nakshatra - The Astronomy and Science Club, NIT Trichy. All rights reserved.</p>
+        </div>
+        
+        {/* Copyright Bar */}
+        <div className="bg-space-darker py-4 border-t border-blue-900/20">
+          <div className="container mx-auto px-4 text-center md:text-left md:flex md:justify-between md:items-center">
+            <p className="text-gray-400 text-sm">
+              © {new Date().getFullYear()} Nakshatra - The Astronomy Club, NIT Trichy. All rights reserved.
+            </p>
+            <div className="mt-3 md:mt-0">
+              <ul className="flex justify-center md:justify-start space-x-6 text-sm">
+                <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Terms of Use</Link></li>
+                <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Sitemap</Link></li>
+              </ul>
+            </div>
           </div>
         </div>
       </footer>

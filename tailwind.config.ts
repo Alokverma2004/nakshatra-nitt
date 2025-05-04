@@ -26,16 +26,12 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
                 space: {
-                  dark: "#1A1F2C",
-                  darker: "#0F1319",
-                  purple: {
-                    DEFAULT: "#8B5CF6",
-                    light: "#A78BFA",
-                    dark: "#7E69AB",
-                  },
+                  dark: "#0d1321",
+                  darker: "#081018",
                   blue: {
-                    DEFAULT: "#0EA5E9",
-                    light: "#38BDF8",
+                    DEFAULT: "#407DFF",
+                    light: "#6698FF",
+                    dark: "#2E5CD9",
                   }
                 },
 				primary: {
@@ -126,8 +122,8 @@ export default {
       },
       backgroundImage: {
         'hero-stars': "url('/stars-bg.png')",
-        'nebula-gradient': 'linear-gradient(to right, #8B5CF6, #0EA5E9)',
-        'nebula-dark': 'linear-gradient(to right, #1A1F2C, #0F1319)'
+        'cosmic-gradient': 'linear-gradient(to right, #407DFF, #6698FF)',
+        'nebula-dark': 'linear-gradient(to right, #0d1321, #081018)'
       }
 		}
 	},

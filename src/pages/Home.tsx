@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import StarBackground from '../components/StarBackground';
+import ImageCarousel from '../components/ImageCarousel';
 import { ArrowRight, Calendar, ChevronDown, Telescope, Users } from 'lucide-react';
 
 // Astronomical API data mock (would be replaced with actual API call)
@@ -21,7 +22,6 @@ const cosmosImages = [
 
 const Home = () => {
   const featuredElementsRef = useRef<HTMLDivElement>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   
   // Set loaded state after a short delay for animations
@@ -56,17 +56,6 @@ const Home = () => {
       elements.forEach((el) => observer.unobserve(el));
     };
   }, []);
-  
-  // Effect for image rotation in "Who We Are" section
-  useEffect(() => {
-    const imageInterval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === cosmosImages.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 3000);
-    
-    return () => clearInterval(imageInterval);
-  }, []);
 
   // Scroll down indicator effect
   const scrollToAbout = () => {
@@ -92,14 +81,14 @@ const Home = () => {
             <div className="flipper">
               <div className="front">
                 <img 
-                  src="/lovable-uploads/nakshatra-logo.png" 
+                  src="/lovable-uploads/7a406d95-69ac-4b48-96b1-3ff4fc2a17e7.png" 
                   alt="Nakshatra Logo" 
                   className="h-32 mx-auto"
                 />
               </div>
               <div className="back">
                 <img 
-                  src="/lovable-uploads/nakshatra-logo.png" 
+                  src="/lovable-uploads/7a406d95-69ac-4b48-96b1-3ff4fc2a17e7.png" 
                   alt="Nakshatra Logo" 
                   className="h-32 mx-auto"
                 />
@@ -109,7 +98,7 @@ const Home = () => {
 
           <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold font-poppins mb-6 leading-tight transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <span className="text-white">Nakshatra</span>
-            <span className="block text-space-purple-light">The Astronomy Club of NIT Trichy</span>
+            <span className="block text-space-blue-light">The Astronomy Club of NIT Trichy</span>
           </h1>
           
           <p className={`text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto transition-all duration-1000 delay-300 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -127,7 +116,7 @@ const Home = () => {
           
           {/* Astronomical Data Widget */}
           <div className={`absolute top-4 right-4 md:right-12 space-card p-3 md:p-4 text-left text-sm transition-all duration-1000 delay-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-            <h4 className="text-space-purple-light font-medium mb-1">Night Sky Status</h4>
+            <h4 className="text-space-blue-light font-medium mb-1">Night Sky Status</h4>
             <div className="text-gray-300 space-y-1">
               <p>Moon Phase: {astronomicalData.moonPhase}</p>
               <p>Illumination: {astronomicalData.moonIllumination}</p>
@@ -150,7 +139,7 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 heading">About Nakshatra</h2>
-            <div className="w-24 h-1 bg-space-purple mx-auto"></div>
+            <div className="w-24 h-1 bg-space-blue mx-auto"></div>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -162,26 +151,15 @@ const Home = () => {
               <p className="text-gray-300 mb-6">
                 Our mission is to foster curiosity about the cosmos and promote scientific literacy among students and the wider community.
               </p>
-              <Link to="/about" className="inline-flex items-center text-space-purple hover:text-space-purple-light transition-colors">
+              <Link to="/about" className="inline-flex items-center text-space-blue hover:text-space-blue-light transition-colors">
                 Learn more about us <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
             <div className="space-card p-6 reveal">
-              <div className="relative rounded-lg overflow-hidden h-72">
-                {cosmosImages.map((src, index) => (
-                  <img 
-                    key={index}
-                    src={src} 
-                    alt={`Cosmos image ${index + 1}`} 
-                    className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
-                  />
-                ))}
-                <div className="absolute inset-0 bg-gradient-to-t from-space-darker to-transparent"></div>
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h4 className="text-xl font-medium">Explore the Cosmos</h4>
-                  <p className="text-sm text-gray-300">Join our stargazing sessions</p>
-                </div>
-              </div>
+              <ImageCarousel 
+                images={cosmosImages}
+                className="h-72"
+              />
             </div>
           </div>
         </div>
@@ -192,10 +170,10 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Events Feature */}
-            <div className="space-card p-6 hover:border-space-purple transition-colors group reveal">
+            <div className="space-card p-6 hover:border-space-blue transition-colors group reveal">
               <div className="flex items-center mb-4">
-                <div className="bg-space-purple/20 p-3 rounded-lg mr-4">
-                  <Calendar className="h-6 w-6 text-space-purple" />
+                <div className="bg-space-blue/20 p-3 rounded-lg mr-4">
+                  <Calendar className="h-6 w-6 text-space-blue" />
                 </div>
                 <h3 className="text-xl font-bold text-white">Regular Events</h3>
               </div>
@@ -204,17 +182,17 @@ const Home = () => {
               </p>
               <Link 
                 to="/events" 
-                className="text-space-purple group-hover:text-space-purple-light transition-colors inline-flex items-center"
+                className="text-space-blue group-hover:text-space-blue-light transition-colors inline-flex items-center"
               >
                 View upcoming events <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
             
             {/* Projects Feature */}
-            <div className="space-card p-6 hover:border-space-purple transition-colors group reveal">
+            <div className="space-card p-6 hover:border-space-blue transition-colors group reveal">
               <div className="flex items-center mb-4">
-                <div className="bg-space-purple/20 p-3 rounded-lg mr-4">
-                  <Telescope className="h-6 w-6 text-space-purple" />
+                <div className="bg-space-blue/20 p-3 rounded-lg mr-4">
+                  <Telescope className="h-6 w-6 text-space-blue" />
                 </div>
                 <h3 className="text-xl font-bold text-white">Technical Projects</h3>
               </div>
@@ -223,17 +201,17 @@ const Home = () => {
               </p>
               <Link 
                 to="/projects" 
-                className="text-space-purple group-hover:text-space-purple-light transition-colors inline-flex items-center"
+                className="text-space-blue group-hover:text-space-blue-light transition-colors inline-flex items-center"
               >
                 Explore projects <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
             
             {/* Team Feature */}
-            <div className="space-card p-6 hover:border-space-purple transition-colors group reveal md:col-span-2 lg:col-span-1">
+            <div className="space-card p-6 hover:border-space-blue transition-colors group reveal md:col-span-2 lg:col-span-1">
               <div className="flex items-center mb-4">
-                <div className="bg-space-purple/20 p-3 rounded-lg mr-4">
-                  <Users className="h-6 w-6 text-space-purple" />
+                <div className="bg-space-blue/20 p-3 rounded-lg mr-4">
+                  <Users className="h-6 w-6 text-space-blue" />
                 </div>
                 <h3 className="text-xl font-bold text-white">Our Team</h3>
               </div>
@@ -242,7 +220,7 @@ const Home = () => {
               </p>
               <Link 
                 to="/team" 
-                className="text-space-purple group-hover:text-space-purple-light transition-colors inline-flex items-center"
+                className="text-space-blue group-hover:text-space-blue-light transition-colors inline-flex items-center"
               >
                 Meet the team <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -251,10 +229,10 @@ const Home = () => {
         </div>
       </section>
       
-      {/* Call to Action - with removed text as requested */}
+      {/* Call to Action */}
       <section className="py-20 bg-space-dark relative">
         <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-nebula-gradient opacity-10"></div>
+          <div className="w-full h-full bg-cosmic-gradient opacity-10"></div>
         </div>
         
         <div className="container mx-auto px-4 relative z-10 text-center">
