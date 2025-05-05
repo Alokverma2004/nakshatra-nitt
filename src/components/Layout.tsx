@@ -74,6 +74,19 @@ const Layout = () => {
     });
   }, [location.pathname]);
 
+  // Handle body scroll lock when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation Bar with enhanced animations */}
@@ -158,18 +171,19 @@ const Layout = () => {
           {/* Mobile Menu Button with animation */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white p-2 transition-transform duration-300 hover:rotate-180 z-50"
+            className="md:hidden text-white p-2 transition-transform duration-300 z-50"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu with enhanced slide-in animation */}
+        {/* Mobile Menu with enhanced slide-in animation - improved for better functionality */}
         <div 
           className={`md:hidden fixed inset-0 bg-space-darker/95 backdrop-blur-lg transform transition-transform duration-300 ease-in-out ${
-            isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
+            isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
           } pt-20 z-40`}
+          aria-hidden={!isMobileMenuOpen}
         >
           <div className="container mx-auto px-4 py-6 flex flex-col space-y-4">
             <NavLink 
@@ -242,8 +256,8 @@ const Layout = () => {
         <Outlet />
       </main>
 
-      {/* Improved Modern Footer */}
-      <footer className="bg-gradient-to-b from-[#061326] to-[#030914] border-t border-space-blue/20">
+      {/* Improved Modern Footer with better visibility */}
+      <footer className="bg-gradient-to-t from-[#020610] via-[#051529] to-[#081f3d] border-t border-space-blue/30 relative z-10">
         <div className="container mx-auto pt-16 pb-10 px-4">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
             {/* Brand and Description */}
@@ -260,7 +274,7 @@ const Layout = () => {
                 </div>
               </div>
               
-              <p className="text-gray-300">
+              <p className="text-gray-200">
                 Exploring the cosmos through science, innovation, and imagination. 
                 Join us on our journey to explore and understand the fascinating wonders of our universe.
               </p>
@@ -320,14 +334,14 @@ const Layout = () => {
           </div>
         </div>
         
-        {/* Copyright Bar with improved contrast */}
-        <div className="bg-[#040b17] py-4 backdrop-blur-sm border-t border-white/10">
+        {/* Copyright Bar with improved contrast and visibility */}
+        <div className="bg-[#020610] py-4 backdrop-blur-sm border-t border-white/10">
           <div className="container mx-auto px-4 text-center md:flex md:justify-between md:items-center">
-            <p className="text-blue-200 text-sm">
+            <p className="text-blue-100 text-sm">
               © {new Date().getFullYear()} Nakshatra - The Astronomy & Science Club, NIT Trichy. All rights reserved.
             </p>
             <div className="mt-3 md:mt-0">
-              <p className="text-xs text-blue-300">Designed with 💫 by Nakshatra Team</p>
+              <p className="text-xs text-blue-200">Designed with 💫 by Nakshatra Team</p>
             </div>
           </div>
         </div>

@@ -196,6 +196,46 @@
   .animate-shimmer {
     animation: shimmer 3s infinite linear;
   }
+  
+  /* Mobile Menu Styles - Improved */
+  .mobile-menu-container {
+    @apply fixed inset-0 bg-space-darker/95 backdrop-blur-lg z-50 overflow-auto transition-transform duration-300;
+  }
+  
+  .mobile-menu-enter {
+    @apply transform translate-x-0;
+  }
+  
+  .mobile-menu-exit {
+    @apply transform -translate-x-full;
+  }
+  
+  /* Enhanced Footer Styles */
+  .footer-enhanced {
+    @apply bg-gradient-to-t from-black via-space-darker to-space-dark border-t border-space-blue/30;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .footer-link-enhanced {
+    @apply text-blue-200 hover:text-white transition-all duration-300 relative overflow-hidden;
+  }
+  
+  .footer-link-enhanced::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300;
+  }
+  
+  .footer-link-enhanced:hover::after {
+    @apply w-full;
+  }
+  
+  .footer-heading {
+    @apply text-white text-lg font-semibold relative;
+  }
+  
+  .footer-heading::after {
+    @apply content-[''] absolute left-0 bottom-0 w-10 h-1 bg-space-blue;
+  }
 }
 
 /* Navbar scroll highlight */
@@ -250,7 +290,7 @@
   transform: scale(0.95);
 }
 
-/* Modern footer styles */
+/* Modern footer styles with better visibility */
 .footer-link {
   @apply text-blue-200 hover:text-white transition-colors relative overflow-hidden;
 }
@@ -277,6 +317,15 @@
   .section {
     @apply py-10;
   }
+  
+  /* Improved mobile menu styles */
+  .mobile-menu-backdrop {
+    @apply bg-black/90 backdrop-filter backdrop-blur-md;
+  }
+  
+  .mobile-link {
+    @apply border-b border-gray-800 py-4 px-4 text-lg font-medium;
+  }
 }
 
 /* Tablet adjustments */
@@ -284,5 +333,26 @@
   .section {
     @apply py-14;
   }
+  
+  .tablet-grid {
+    @apply grid-cols-2;
+  }
 }
 
+/* Fixed overlay for mobile menu */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(4, 9, 22, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 40;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-overlay.active {
+  transform: translateX(0);
+}

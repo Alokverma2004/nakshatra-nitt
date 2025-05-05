@@ -89,6 +89,114 @@ const otherTeamMembers = [
       facebook: "#",
       instagram: "#"
     }
+  },
+  {
+    id: 7,
+    name: "Arjun Reddy",
+    role: "Content Creator",
+    image: "https://i.pravatar.cc/300?img=13",
+    social: {
+      email: "arjun@example.com",
+      linkedin: "#",
+      facebook: "#",
+      instagram: "#"
+    }
+  },
+  {
+    id: 8,
+    name: "Meera Verma",
+    role: "Design Lead",
+    image: "https://i.pravatar.cc/300?img=14",
+    social: {
+      email: "meera@example.com",
+      linkedin: "#",
+      facebook: "#",
+      instagram: "#"
+    }
+  },
+  {
+    id: 9,
+    name: "Rahul Joshi",
+    role: "Technical Member",
+    image: "https://i.pravatar.cc/300?img=16",
+    social: {
+      email: "rahul@example.com",
+      linkedin: "#",
+      facebook: "#",
+      instagram: "#"
+    }
+  },
+  {
+    id: 10,
+    name: "Sneha Kumar",
+    role: "Social Media Manager",
+    image: "https://i.pravatar.cc/300?img=17",
+    social: {
+      email: "sneha@example.com",
+      linkedin: "#",
+      facebook: "#",
+      instagram: "#"
+    }
+  },
+  {
+    id: 11,
+    name: "Karan Malhotra",
+    role: "Event Manager",
+    image: "https://i.pravatar.cc/300?img=18",
+    social: {
+      email: "karan@example.com",
+      linkedin: "#",
+      facebook: "#",
+      instagram: "#"
+    }
+  },
+  {
+    id: 12,
+    name: "Aisha Patel",
+    role: "Workshop Coordinator",
+    image: "https://i.pravatar.cc/300?img=19",
+    social: {
+      email: "aisha@example.com",
+      linkedin: "#",
+      facebook: "#",
+      instagram: "#"
+    }
+  },
+  {
+    id: 13,
+    name: "Nikhil Mehta",
+    role: "Technical Member",
+    image: "https://i.pravatar.cc/300?img=20",
+    social: {
+      email: "nikhil@example.com",
+      linkedin: "#",
+      facebook: "#",
+      instagram: "#"
+    }
+  },
+  {
+    id: 14,
+    name: "Riya Shah",
+    role: "Content Writer",
+    image: "https://i.pravatar.cc/300?img=21",
+    social: {
+      email: "riya@example.com",
+      linkedin: "#",
+      facebook: "#",
+      instagram: "#"
+    }
+  },
+  {
+    id: 15,
+    name: "Vivek Sharma",
+    role: "Graphics Designer",
+    image: "https://i.pravatar.cc/300?img=22",
+    social: {
+      email: "vivek@example.com",
+      linkedin: "#",
+      facebook: "#",
+      instagram: "#"
+    }
   }
 ];
 
@@ -283,12 +391,12 @@ const Team = () => {
             <div className="w-24 h-1 bg-space-blue mx-auto mt-4"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {otherTeamMembers.map((member) => (
               <Card key={member.id} className="space-card reveal team-card overflow-hidden">
                 <CardContent className="p-0">
                   {/* Team member image with overlay */}
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-t from-space-darker via-transparent to-transparent z-10"></div>
                     <img 
                       src={member.image} 
@@ -296,33 +404,33 @@ const Team = () => {
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
                     <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-                      <h3 className="text-xl font-bold text-white">{member.name}</h3>
-                      <p className="text-space-blue-light">{member.role}</p>
+                      <h3 className="text-lg font-bold text-white">{member.name}</h3>
+                      <p className="text-space-blue-light text-sm">{member.role}</p>
                     </div>
                   </div>
                   
                   {/* Social media links */}
-                  <div className="flex justify-center gap-6 p-4 border-t border-white/10">
+                  <div className="flex justify-center gap-4 p-3 border-t border-white/10">
                     <a 
                       href={member.social.linkedin} 
                       className="text-gray-400 hover:text-white transition-colors"
                       aria-label={`${member.name}'s LinkedIn`}
                     >
-                      <Linkedin className="h-5 w-5" />
+                      <Linkedin className="h-4 w-4" />
                     </a>
                     <a 
                       href={member.social.facebook} 
                       className="text-gray-400 hover:text-white transition-colors"
                       aria-label={`${member.name}'s Facebook`}
                     >
-                      <Facebook className="h-5 w-5" />
+                      <Facebook className="h-4 w-4" />
                     </a>
                     <a 
                       href={member.social.instagram} 
                       className="text-gray-400 hover:text-white transition-colors"
                       aria-label={`${member.name}'s Instagram`}
                     >
-                      <Instagram className="h-5 w-5" />
+                      <Instagram className="h-4 w-4" />
                     </a>
                   </div>
                 </CardContent>

@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import StarBackground from '../components/StarBackground';
@@ -212,7 +213,7 @@ const Home = () => {
         </div>
       </section>
       
-      {/* Newsletter Section - Added as requested */}
+      {/* Newsletter Section - Added as requested with the new magazine image */}
       <section className="section bg-space-darker relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <div className="w-full h-full bg-cosmic-gradient"></div>
@@ -222,9 +223,9 @@ const Home = () => {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="w-full lg:w-1/3 flex justify-center">
               <img 
-                src="/lovable-uploads/17c8b972-7058-4743-930b-750bcc504672.png" 
+                src="/lovable-uploads/5535bc14-4d6f-4ab4-9d40-2bd02aea8733.png" 
                 alt="VYOMIKA Magazine" 
-                className="max-h-64 sm:max-h-80 md:max-h-96 object-cover rounded-lg shadow-xl hover-float"
+                className="max-h-96 sm:max-h-[28rem] md:max-h-[36rem] object-contain rounded-lg shadow-xl hover-float"
               />
             </div>
             
